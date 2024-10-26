@@ -1,25 +1,24 @@
 const wrapper = document.querySelector(".wrapper"),
 qrInput = wrapper.querySelector(".form input"),
 generateBtn = wrapper.querySelector(".form button"),
-qrImg = wrapper.querySelector(".qr code img");
+qrImg = wrapper.querySelector(".qr-code img");
+let preValue;
 
-let prevalue;
-
-generateBtn.addEventListener("click",()=>{
-     let qrValue = qrInput.value.trim();
-     if(!qrValue || prevalue ===qrValue)return;
-     prevalue = qrValue;
-     generateBtn.innerText = "Generating Qr code....";
-     qrImg.src=" https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=$(qrValue)"
-     qrImg.addEventListener("load",()=>{
-       wrapper.classList.add("active");
-     generateBtn.innerText = "Generate Qr code";
-     });
-
-
-});
-qrInput.addEventListener("keyup",()=>{
-    if(!qrInput.value.trim()){
-        wrapper.classList.remove("active");
-    }
+generateBtn.addEventListener("click", () => {
+    let qrValue = qrInput.value.trim();
+    if(!qrValue || preValue === qrValue) return;
+    preValue = qrValue;
+    generateBtn.innerText = "Generating QR Code...";
+    qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${qrValue}`;
+    qrImg.addEventListener("load", () => {
+        wrapper.classList.add("active");
+        generateBtn.innerText = "Generate QR Code";
     });
+});
+
+qrInput.addEventListener("keyup", () => {
+    if(!qrInput.value.trim()) {
+        wrapper.classList.remove("active");
+        preValue = "";
+    }
+});
