@@ -86,3 +86,33 @@ header p{
    justify-content: center;
    border: 1pc solid #ccc;
 }
+.wrapper .active .qr-code{
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.5s 0.05s ease;
+
+}
+.qr-code img{
+    width: 200px;
+}
+ @media screen and (max-width: 430px) {
+    .wrapper{
+        height: 255px;
+        padding: 16px 20px ;
+
+    }
+    .wrapper.active{
+        height:530px
+
+    }
+    header p {
+        color: #696969;
+    }
+    .form:where(input,button){
+        height: 523px;
+    }
+    .qr-code img{
+        width: 160px;
+    }
+    
+ }
